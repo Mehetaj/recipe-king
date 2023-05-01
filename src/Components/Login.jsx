@@ -24,7 +24,7 @@ const Login = () => {
                     </div>
                     <input className='submit w-full mt-4 bg-rose-400 px-5 py-2 text-lg text-white rounded-lg' type="submit" value="Login" />
                     <div className=' mt-2 font-bold text-center mx-auto'>
-                        <p>Already Have an Account? <Link className='underline text-red-400'>Sign Up Here</Link></p>
+                        <p>Already Have an Account? <Link to="/signup" className='underline text-red-400'>Sign Up Here</Link></p>
                     </div>
                 </form>
 
