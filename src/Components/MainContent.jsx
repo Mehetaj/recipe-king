@@ -2,6 +2,7 @@ import React from 'react';
 import Banner from './Banner';
 import FirstSec from './FirstSec';
 import Chefs from './Chefs';
+import SecondSec from './SecondSec';
 
 
 const MainContent = () => {
@@ -9,6 +10,7 @@ const MainContent = () => {
         <div>
             <Banner />
             <Chefs />
+            <SecondSec />
             <FirstSec />
         </div>
     );
