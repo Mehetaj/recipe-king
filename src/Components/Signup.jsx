@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import { ToastContainer } from 'react-toastify';
 // import { AuthContext } from '../Provider/AuthProvider';
 
 
@@ -37,12 +38,7 @@ const Signup = () => {
             })
             .catch(err => console.log(err.message))
 
-        // const profile = (name,photo) => {
-        //     updateProfile(auth.currentUser , {
-        //         displayName : name,
-        //         photoURL : photo
-        //     })
-        // }
+        
 
     }
     return (
@@ -107,6 +103,19 @@ const Signup = () => {
                 </div>
 
             </div>
+
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
 
         </div>
     );

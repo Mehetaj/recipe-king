@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
-import autoprefixer from 'autoprefixer';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const [error , setError] = useState("")
@@ -28,9 +28,20 @@ const Login = () => {
                 // console.log(loggedUser);
                 form.reset()
                 navigate(from , {replace : true})
+                
             })
             .catch(error => {
                 setError(error.message);
+            })
+            toast('Succesfully Login Complete', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
             })
     }
 
@@ -38,15 +49,36 @@ const Login = () => {
    const handleResetPassword = e => {
     const email = (emailRef.current.value);
     if(!email){
-        alert('Please Provide your email address to reset password')
+        
+
+        toast('Please Provide your email address to reset password', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
+        
         return;
     }
     resetPassword(email)
     .then(() => {
-        alert("Please Check your Email")
+        toast('Please check your Mail', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        })
 
     })
-    .catch(err => console.log(err.message))
+    .catch(err => setError(err.message))
    }
 
     return (
@@ -100,7 +132,18 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };
