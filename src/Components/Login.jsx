@@ -1,19 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
+import autoprefixer from 'autoprefixer';
 
 const Login = () => {
 
+    const emailRef = useRef();
 
-    const { signIn, logOut , user} = useContext(AuthContext)
+    const { signIn , resetPassword} = useContext(AuthContext)
 
     const handleLogin = (e) => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         signIn(email, password)
             .then(result => {
@@ -26,9 +28,19 @@ const Login = () => {
     }
 
 
-    const handleLogOut = () => {
-        logOut()
+   const handleResetPassword = e => {
+    const email = (emailRef.current.value);
+    if(!email){
+        alert('Please Provide your email address to reset password')
+        return;
     }
+    resetPassword(email)
+    .then(() => {
+        alert("Please Check your Email")
+
+    })
+    .catch(err => console.log(err.message))
+   }
 
     return (
         <div className='container mx-auto flex justify-center mt-20 items-center max-w-full'>
@@ -38,16 +50,16 @@ const Login = () => {
                     <h2 className='text-xl font-bold'>Login</h2>
 
                     <div className="relative z-0 w-full mt-[54px] mb-[55px] group">
-                        <input type="email" name="email" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
-                        <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username or Email</label>
+                        <input ref={emailRef} type="email" name="email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Username or Email</label>
                     </div>
                     <div className="relative z-0 w-full mt-[54px] mb-[45px] group">
-                        <input type="password" name="password" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
-                        <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Passowrd</label>
+                        <input type="password" name="password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer" placeholder=" " required />
+                        <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-400 peer-focus:dark:text-red-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Passowrd</label>
                     </div>
                     <div className='flex justify-between'>
-                        <span><input type="checkbox" name="" value="Remember Me" id="" /><span className='font-bold ml-2'>Remember Me</span></span>
-                        <Link className=' text-red-500 underline'>Forgot Password</Link>
+                        <span><input type="checkbox" name="" value="Remember Me" /><span className='font-bold ml-2'>Remember Me</span></span>
+                        <Link onClick={handleResetPassword} className=' text-red-500 underline'>Forgot Password</Link>
                     </div>
                     <input className='submit w-full mt-4 bg-rose-400 px-5 py-2 text-lg text-white rounded-lg' type="submit" value="Login" />
                     <div className=' mt-2 font-bold text-center mx-auto'>
