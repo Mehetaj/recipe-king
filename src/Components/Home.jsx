@@ -1,14 +1,22 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigation } from 'react-router-dom';
 
 const Home = () => {
+    const navigation = useNavigation()
     return (
         <div>
             <Header />
-            <Outlet/>
-            {/* <Footer/> */}
+            <div>{
+                navigation.state === 'loading' && <>
+                <div>
+                    
+                </div>
+                </>
+            }</div>
+            <Outlet />
+            <Footer />
         </div>
     );
 };

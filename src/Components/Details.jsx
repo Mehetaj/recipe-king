@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaThumbsUp } from 'react-icons/fa'
 import Recipe from './Recipe';
@@ -7,6 +7,7 @@ const Details = () => {
     const chef = useLoaderData()
     // console.log(chef.recipes);
     const { picture, name, bio, like, num_recipes, years_of_experience, recipes } = chef;
+    const [likes , setLike] = useState(parseInt(like)) 
     return (
         <div className='container mt-20 mx-auto'>
             <div className='flex items-center justify-evenly'>
@@ -17,13 +18,16 @@ const Details = () => {
                     <p className='my-2'><span className='font-bold'>Recipes :</span> {num_recipes} Different Kind of Recipes</p>
                     <p><span className='font-bold'>Experience :</span> {years_of_experience} years experience on this field </p>
 
-                    <p className='flex items-center my-3'><FaThumbsUp className='mr-2' />{like}</p>
+                    <p className='flex items-center my-3'><FaThumbsUp  onClick={() => {
+                        parseInt(setLike(likes => likes + 1))
+                        
+                        }} className='mr-2 focus:bg-red-400' />{likes}</p>
                 </div>
             </div>
 
             <div className='mt-20'>
                 {
-                    recipes.map((recipe , i) => <Recipe key={i} recipe={recipe}/>)
+                    recipes?.map((recipe , i) => <Recipe key={i} recipe={recipe}/>)
                 }
             </div>
         </div>

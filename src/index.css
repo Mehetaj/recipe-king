@@ -208,6 +208,15 @@ footer {
 }
 
 
+.active{
+    @apply font-medium tracking-wide text-red-600 transition-colors duration-200
+  }
+  
+  .default{
+    @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-red-600
+  }
+
+
 
 
 

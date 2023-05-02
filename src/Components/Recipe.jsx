@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 
 const Recipe = ({ recipe }) => {
-    console.log(recipe);
+    // console.log(recipe);
     const { name, picture, description, ingredients, instructions, rating } = recipe;
 
     const favorite = () => {
@@ -32,24 +32,26 @@ const Recipe = ({ recipe }) => {
                     <div className='my-6 p-4 w-[50%]'>
                         <h2 className='text-2xl my-4 font-bold'>Ingredients</h2>
                         {
-                            ingredients.map(i => <ol><li className=' list-disc'>{i}</li></ol>)
+                            ingredients.map((i,index) => <ol key={index}><li className=' list-disc'>{i}</li></ol>)
                         }
                     </div>
 
                     <div className='my-6 w-[50%]'>
                         <h2 className='text-2xl my-4 font-bold'>Cooking Method</h2>
                         {
-                            instructions.map(i => <p>{i}</p>)
+                            instructions.map((i,index) => <p key={index}>{i}</p>)
                         }
 
 
                     </div>
                 </div>
-                <hr className='my-4' />
+                <hr className='my-4 border-red-400' />
 
                 <div>
                     <p className='text-red-400 text-center text-xl my-4'>{description}</p>
                 </div>
+
+                <hr  className='border-red-400 my-4'/>
 
                 <div className='flex justify-between items-center'>
                     <div title={rating} className='flex font-bold items-center' aria-disabled>

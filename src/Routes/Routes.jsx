@@ -7,6 +7,7 @@ import Error from "../Components/Error";
 import Chefs from "../Components/Chefs";
 import Chef from "../Components/Chef";
 import Details from "../Components/Details";
+import Blog from "../Components/Blog";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup />
+            },
+            {
+                path : '/blogs',
+                element : <Blog/>
             }
         ],
 

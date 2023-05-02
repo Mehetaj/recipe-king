@@ -11,9 +11,9 @@ const Chef = ({ chef }) => {
             <div className='flex justify-around items-center mt-4'>
                 <img className='w-[120px] ' src={picture} alt="" />
                 <div>
-                    <h2 className='font-mono text-2xl font-bold'>{name}</h2>
-                    <p>Experience : {years_of_experience} years on this Field</p>
-                    <p>Recipes : {num_recipes} Different Recipes</p>
+                    <h2 className='font-mono my-4 text-2xl font-bold'>{name}</h2>
+                    <p className='mb-3'>Experience : {years_of_experience} years on this Field</p>
+                    <p className='mb-3'>Recipes : {num_recipes} Different Recipes</p>
                     <p className='flex items-center bottom-0'><FaThumbsUp /> {like}</p>
                     <button className='bg-red-400 px-4 mt-10 py-2'><Link to={`/${id}`}>View Recipes</Link></button>
                 </div>
