@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaThumbsUp } from 'react-icons/fa';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Chef = ({ chef }) => {
     
