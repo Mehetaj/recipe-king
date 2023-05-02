@@ -23,20 +23,20 @@ const Recipe = ({ recipe }) => {
         });
     }
     return (
-        <div className='container w-[1000px] border p-4 mx-auto flex justify-center  mt-10'>
-            <div className='w-[1000px] '>
+        <div className='container lg:w-[1000px] border p-4 mx-auto lg:flex justify-center  mt-10'>
+            <div className='lg:w-[1000px] '>
                 <img className=' w-[1000px] h-[600px]' src={picture} alt="" />
                 <h1 className='text-3xl  font-bold font-serif my-4'>{name}</h1>
 
-                <div className='flex justify-evenly items-baseline'>
-                    <div className='my-6 p-4 w-[50%]'>
+                <div className=' float-left lg:flex justify-evenly items-baseline'>
+                    <div className='my-6 p-4 lg:w-[50%]'>
                         <h2 className='text-2xl my-4 font-bold'>Ingredients</h2>
                         {
                             ingredients.map((i,index) => <ol key={index}><li className=' list-disc'>{i}</li></ol>)
                         }
                     </div>
 
-                    <div className='my-6 w-[50%]'>
+                    <div className='my-6 lg:w-[50%]'>
                         <h2 className='text-2xl my-4 font-bold'>Cooking Method</h2>
                         {
                             instructions.map((i,index) => <p key={index}>{i}</p>)

@@ -10,13 +10,13 @@ const Footer = () => {
     <h3>Thatix<span>Recopes</span></h3>
 
     <p className="footer-links">
-        <Link href="#">Home</Link>
+        <Link to="">Home</Link>
         |
-        <Link href="#">About</Link>
+        <Link to="">About</Link>
         |
-        <Link href="#">Contact</Link>
+        <Link to="">Contact</Link>
         |
-        <Link href="#">Blog</Link>
+        <Link to="">Blog</Link>
     </p>
 
     <p className="footer-company-name">Copyright © 2021 <strong>SagarDeveloper</strong> All rights reserved</p>
@@ -47,11 +47,11 @@ const Footer = () => {
         HTML, JavaScript and Projects using C/C++.
     </p>
     <div className="footer-icons">
-        <a href="#"><i className="fa fa-facebook"></i></a>
-        <a href="#"><i className="fa fa-instagram"></i></a>
-        <a href="#"><i className="fa fa-linkedin"></i></a>
-        <a href="#"><i className="fa fa-twitter"></i></a>
-        <a href="#"><i className="fa fa-youtube"></i></a>
+        <Link to=""><i className="fa fa-facebook"></i></Link>
+        <Link to=""><i className="fa fa-instagram"></i></Link>
+        <Link to=""><i className="fa fa-linkedin"></i></Link>
+        <Link to=""><i className="fa fa-twitter"></i></Link>
+        <Link to=""><i className="fa fa-youtube"></i></Link>
     </div>
 </div>
 </footer>

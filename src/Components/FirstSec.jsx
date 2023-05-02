@@ -7,7 +7,7 @@ const FirstSec = () => {
             <div className='lg:flex justify-evenly border items-center lg:p-20 border-red-300 h-full'>
                 <div className='text-center  font-sans'>
                 <h1 className='text-3xl text-red-400 font-serif'><i>Hello there! I am Maggy. <br /> Start cooking with me.</i></h1>
-                <p className='w-[400px] mt-4 text-gray-500'>
+                <p className='lg:w-[400px] mt-4 text-gray-500'>
                 Lorem ipsum dolor sit amet, ad consectetur adi picibe elit, sed do eiusmod tempor inci didunt quo labore e dolore magna aliqua ut.
                 </p>
 
