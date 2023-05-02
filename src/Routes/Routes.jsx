@@ -8,6 +8,7 @@ import Chefs from "../Components/Chefs";
 import Chef from "../Components/Chef";
 import Details from "../Components/Details";
 import Blog from "../Components/Blog";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: ':id',
-                element: <Details />,
+                element: <PrivateRoute><Details /></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://recipies-mehetaj.vercel.app/chefs/${params.id}`)
             },
             {

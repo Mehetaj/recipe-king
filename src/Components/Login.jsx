@@ -1,10 +1,15 @@
-import React, { useContext, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useRef, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
 import autoprefixer from 'autoprefixer';
 
 const Login = () => {
+    const [error , setError] = useState("")
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || '/';
 
     const emailRef = useRef();
 
@@ -20,10 +25,12 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
+                form.reset()
+                navigate(from , {replace : true})
             })
             .catch(error => {
-                console.log(error.message);
+                setError(error.message);
             })
     }
 
@@ -61,6 +68,7 @@ const Login = () => {
                         <span><input type="checkbox" name="" value="Remember Me" /><span className='font-bold ml-2'>Remember Me</span></span>
                         <Link onClick={handleResetPassword} className=' text-red-500 underline'>Forgot Password</Link>
                     </div>
+                    <p className='text-red-400 text-center'><small>{error}</small></p>
                     <input className='submit w-full mt-4 bg-rose-400 px-5 py-2 text-lg text-white rounded-lg' type="submit" value="Login" />
                     <div className=' mt-2 font-bold text-center mx-auto'>
                         <p>Don't Have an Account? <Link to="/signup" className='underline text-red-400'>Sign Up Here</Link></p>
