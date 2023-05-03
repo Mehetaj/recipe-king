@@ -6,7 +6,7 @@ import { Outlet, useNavigation } from 'react-router-dom';
 const Home = () => {
     let navigation = useNavigation()
     return (
-        <div className='container  lg:w-[100%]  mx-auto'>
+        <div className=' lg:w-[100%]  mx-auto'>
             <Header />
             <div>
             {navigation.state === 'loading' ? <div className='grid grid-cols-1 gap-20 lg:grid-cols-3'>

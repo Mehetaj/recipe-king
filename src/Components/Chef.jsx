@@ -11,10 +11,10 @@ const Chef = ({ chef }) => {
         <div className='container mx-auto  p-2 border lg:gap-4'>
             <div className='lg:flex justify-around items-center mt-4'>
                 <div className='flex justify-center items-center'>
-                    <LazyLoad className='lazyLoad'  height={120} width={120} threshold={0} offset={100}>
+                    
 
                 <img className='w-[120px] ' src={picture} alt="" />
-                    </LazyLoad>
+                    
                 </div>
                 <div>
                     <h2 className='font-mono my-4 text-2xl font-bold'>{name}</h2>
