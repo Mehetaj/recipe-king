@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
+import Popup from './Popup';
 
 const Login = () => {
     const [error , setError] = useState("")
@@ -113,24 +113,7 @@ const Login = () => {
                     <div className='w-[200px] left-[506px] top-[663px] border'></div>
                 </div>
 
-                <div>
-                    <div className='flex justify-center items-center mt-5'>
-                        <div>
-                            <Link>
-                                <div className='popup-login border px-10 py-3 rounded-xl flex items-center'>
-                                    <FaGithub className='w-[37px] h-[37px] ml-2 rounded-full' />
-                                    <p className='mx-auto'>Continue With Facebook</p>
-                                </div>
-                            </Link>
-                            <Link>
-                                <div className='popup-login border px-10 py-3 rounded-xl flex items-center mt-4'>
-                                    <FaGoogle className='w-[37px] h-[30px] text-blue-500 ml-2 rounded-full' />
-                                    <p className='mx-auto'>Continue With Google</p>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+                <Popup/>
             </div>
             <ToastContainer
                 position="top-center"

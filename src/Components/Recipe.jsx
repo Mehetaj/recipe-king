@@ -10,8 +10,8 @@ const Recipe = ({ recipe }) => {
     // console.log(recipe);
     const { name, picture, description, ingredients, instructions, rating } = recipe;
 
-    const favorite = () => {
-        toast('🦄 Add To Favorite', {
+    const fav = () => {
+        toast('Add to favorite', {
             position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
@@ -20,10 +20,10 @@ const Recipe = ({ recipe }) => {
             draggable: true,
             progress: undefined,
             theme: "light",
-        });
+        })
     }
     return (
-        <div className='container lg:w-[1000px] border p-4 mx-auto lg:flex justify-center  mt-10'>
+        <div className='container lg:w-[1000px] border p-4 cur mx-auto lg:flex justify-center  mt-10'>
             <div className='lg:w-[1000px] '>
                 <img className=' w-[1000px] h-[600px]' src={picture} alt="" />
                 <h1 className='text-3xl  font-bold font-serif my-4'>{name}</h1>
@@ -59,7 +59,9 @@ const Recipe = ({ recipe }) => {
                         <Rating isDisabled={true} style={{ maxWidth: 100 }} value={rating} />
                     </div>
 
-                    <button onClick={favorite} className='text-red-300 text-3xl bg--700 focus:text-red-500'><FaStar /></button>
+                    <button onClick={fav} className='text-red-300  text-3xl bg--700 focus:text-red-500 focus:cursor-not-allowed'><FaStar />
+                    
+                    </button>
                 </div>
             </div>
             <ToastContainer

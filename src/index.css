@@ -216,6 +216,11 @@ footer {
     @apply font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-red-600
   }
 
+  .lazyLoad{
+    opacity: 0;
+  transition: all 1s ease-in-out;
+  }
+
 
 
 

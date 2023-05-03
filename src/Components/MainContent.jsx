@@ -7,10 +7,12 @@ import SecondSec from './SecondSec';
 
 const MainContent = () => {
     return (
-        <div>
+        <div className='w-full'>
             <Banner />
             <Chefs />
+            <div className=''>
             <SecondSec />
+            </div>
             <FirstSec />
         </div>
     );

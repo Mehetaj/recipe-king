@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { createUserWithEmailAndPassword, getAuth, updateProfile } from 'firebase/auth';
 import app from '../firebase/firebase.config';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import Popup from './Popup';
 // import { AuthContext } from '../Provider/AuthProvider';
 
 
@@ -11,6 +12,7 @@ const auth = getAuth(app)
 
 const Signup = () => {
     const [error, setError] = useState("");
+    const navigate = useNavigate();
     // const {updateProfile} = useContext(AuthContext)
     const handleSignup = (e) => {
         e.preventDefault()
@@ -22,7 +24,16 @@ const Signup = () => {
         // console.log(name, password, email, photo);
 
         if (password < 6) {
-            setError("Password Must be 6 Characters or longer")
+            toast('Password Must be 6 Characters or longer', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
             return;
         }
 
@@ -33,12 +44,23 @@ const Signup = () => {
                 // profile(loggeduser , name , password)
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo
-                }).then(() => {}).catch(err => {console.log(err)})
-                console.log(loggeduser);
-            })
-            .catch(err => console.log(err.message))
+                }).then(() => { }).catch(err => { console.log(err) })
 
-        
+                navigate('/')
+
+            })
+            .catch(err => toast(err.message, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            }))
+
+
 
     }
     return (
@@ -82,24 +104,7 @@ const Signup = () => {
                         <div className='w-[200px] left-[506px] top-[663px] border'></div>
                     </div>
 
-                    <div>
-                        <div className='flex justify-center items-center mt-5'>
-                            <div>
-                                <Link>
-                                    <div className='popup-login border px-10 py-3 rounded-xl flex items-center'>
-                                        <FaGithub className='w-[37px] h-[37px] ml-2 rounded-full' />
-                                        <p className='mx-auto'>Continue With Facebook</p>
-                                    </div>
-                                </Link>
-                                <Link>
-                                    <div className='popup-login border px-10 py-3 rounded-xl flex items-center mt-4'>
-                                        <FaGoogle className='w-[37px] h-[30px] text-red-500 ml-2 rounded-full' />
-                                        <p className='mx-auto'>Continue With Google</p>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                    <Popup />
                 </div>
 
             </div>
