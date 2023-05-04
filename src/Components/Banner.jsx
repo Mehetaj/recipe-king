@@ -6,7 +6,7 @@ const Banner = () => {
         <div>
              <div className=' container lg:flex lg:justify-center lg:tems-center lg:mx-auto my-6 '>
             <div>
-                <img className='max-w-full h-[350px] lg:container lg:w-[1250px] lg:h-[600px] ' src={banner} alt="" />
+                <img className=' h-[350px] lg:container lg:w-[1550px] lg:h-[600px] ' src={banner} alt="" />
                 <div className='lg:text-center p-4 shadow-2xl lg:p-12 '>
                     <p className='text-red-400 mb-4 seafood'><small><span>S</span><span>E</span><span>A</span><span>F</span><span>O</span><span>O</span><span>D</span></small></p>
                     <h2 className=' text-lg lg:text-2xl font-bold font-mono mb-3'>Spicy shrimp soup with tomatoes</h2>

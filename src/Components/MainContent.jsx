@@ -7,7 +7,7 @@ import SecondSec from './SecondSec';
 
 const MainContent = () => {
     return (
-        <div className='w-full'>
+        <div className=''>
             <Banner />
             <Chefs />
             <div className=''>
